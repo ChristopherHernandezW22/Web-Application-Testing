@@ -5,7 +5,7 @@ import Display from './components/Display.js';
 function App() {
   return (
     <div className="App">
-      <Display />
+      <Display strikes={2} balls={3} />
     </div>
   );
 }
