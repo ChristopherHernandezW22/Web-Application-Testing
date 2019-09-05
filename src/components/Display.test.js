@@ -7,9 +7,19 @@ describe('<Display />', () => {
         render(<Display />);
     });
     it('props working', () => {
-        const display = render(<Display strikes={2} balls={3} />);
-        display.getByText(/Strikes: 2/);
-        display.getByText(/Balls: 3/);
-
+        const balls = 3, strikes = 2;
+        const display = render(<Display strikes={strikes} balls={balls} />);
+        display.getByText(new RegExp(`Strikes: ${strikes}`, 'i'));
+        display.getByText(new RegExp(`Balls: ${balls}`, `i`));
+    });
+    it('props working', () => {
+        const display = render(<Display strikes={1} balls={2} />);
+        display.getByText(/Strikes: 1/);
+        display.getByText(/Balls: 2/);
+    });
+    it('Checking if component is dumb', () => {
+        const display = render(<Display strikes={-2} balls={400} />);
+        display.getByText(/Strikes: -2/);
+        display.getByText(/Balls: 400/);
     });
 });
