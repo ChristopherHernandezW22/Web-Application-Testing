@@ -7,10 +7,21 @@ function App() {
   const [strikes, setStrikes] = useState(0);
   const [balls, setBalls] = useState(0);
   const scoreStrikes = () => {
+    if (strikes === 2) {
+      setStrikes(0);
+      setBalls(0);
+    } else {
+      setStrikes(strikes+1);
+    }
     setStrikes(strikes+1)
   };
   const scoreBalls = () => {
-    setBalls(balls+1)
+    if (balls === 3) {
+      setStrikes(0);
+      setBalls(0);
+    } else {
+      setBalls(balls+1);
+    }
   };
   const scoreFoul = () => {
     setStrikes(strikes+1)
